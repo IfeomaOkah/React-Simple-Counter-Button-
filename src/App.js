@@ -13,7 +13,7 @@ class App extends Component {
 
 class Counter extends Component {
   state = {
-    clickCount: 0
+    clickCount: 0,
   };
 
   clickHandler = () => {
@@ -22,8 +22,25 @@ class Counter extends Component {
     });
   };
 
+  reset = () => {
+    this.setState({clickCount:0});
+  };
+
+  clickMinus = () => {
+    this.setState({
+      clickCount: this.state.clickCount - 1
+    });
+  };
+    
   render() {
-    return <button onClick={this.clickHandler}>{this.state.clickCount}</button>;
-  }
+    return (
+     <div>
+    <h1>{this.state.clickCount}</h1>
+    <button onClick={this.clickMinus}>-</button>   
+    <button onClick={this.clickHandler}>+</button>
+    <button onClick={this.reset}>Reset</button>
+    </div>
+  );
+}
 }
 export default App;
